@@ -1,9 +1,11 @@
 #root {
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  width: 100%;
+  height: 100%;
   background-color: black;
   box-sizing: border-box;
   overflow-x: hidden; /* hide the horizontal overflow */
+  overflow-y: hidden;
 }
 
 /* width */
@@ -29,7 +31,7 @@
 
 .page {
   background-color: #d5c9ae;
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
   margin: 0;
@@ -100,6 +102,7 @@
   opacity: 0.8;
 }
 .page .page-wrapper .page-content {
+  z-index: 10;
   position: relative;
   margin-top: 0px;
   width: 100%;
@@ -142,8 +145,8 @@
 #post .tags {
   width: -moz-min-content;
   width: min-content;
-  transform: translateX(-10px);
   z-index: 5;
+  margin-bottom: 0px;
 }
 #post .tags .tag {
   margin-right: 25px;
@@ -171,6 +174,12 @@
   z-index: 5;
   text-align: center;
   padding-inline: 10px;
+}
+@media (max-width: 500px) {
+  #post .description {
+    margin-top: -5px;
+    padding: 0;
+  }
 }
 #post .image {
   margin: 30px 0;
@@ -395,6 +404,7 @@
 
 .openHeadButton {
   cursor: pointer;
+  color: #3e332b;
   border-radius: 30px;
   z-index: 1;
   position: absolute;
