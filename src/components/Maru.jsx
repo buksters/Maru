@@ -28,7 +28,8 @@ export const Maru = forwardRef(
       <group ref={group} {...props} dispose={null}>
         <group name="Scene">
           <group>
-            <Html transform position={[-1.3, 4, 1.73]} className="instructions">
+            <Html transform position={[0, 4.3, 1.73]} className="instructions">
+              <h2>Welcome to Ibuki's Blog</h2>
               <p>pinch to zoom, drag to rotate</p>
             </Html>
             <mesh position={[-1.6, 3.5, -.03]}>

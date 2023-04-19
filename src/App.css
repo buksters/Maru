@@ -508,7 +508,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  color: black;
+  color: #3e332b;
   font-family: "Dongle", sans-serif;
   font-weight: 300;
 }
@@ -527,8 +527,19 @@
   font-weight: 300;
   white-space: nowrap;
   overflow: hidden;
-  font-size: 11px;
-  color: #5a5150;
+  color: #3e332b;
+  text-align: center;
+}
+.instructions h2 {
+  letter-spacing: 1.75px;
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+}
+.instructions p {
+  font-size: 10px;
+  letter-spacing: 0.75px;
+  margin: 0;
 }
 
 svg {

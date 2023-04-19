@@ -636,7 +636,7 @@ $darkerblue: #495d65;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  color: black;
+  color: $darkerbrown;
   font-family: $playful-font;
   font-weight: 300;
   
@@ -658,8 +658,21 @@ $darkerblue: #495d65;
   font-weight: 300;
   white-space: nowrap;
   overflow: hidden;
-  font-size: 11px;
-  color: #5a5150;
+  color: $darkerbrown;
+  text-align: center;
+
+  h2 {
+    letter-spacing: 1.75px;
+    text-align: center;
+    font-size: 18px;
+    margin: 0;
+  }
+  p {
+    font-size: 10px;
+    letter-spacing: .75px;
+    margin: 0;
+  }
+  
 }
 
 svg{
