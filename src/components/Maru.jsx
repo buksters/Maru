@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 export const Maru = forwardRef(  
   function Model(props, headTop) {
     const group = useRef()
-    const { nodes, materials, animations } = useGLTF('./models/maru.glb')
+    const { nodes, materials, animations } = useGLTF('models/maru.glb')
     const { actions } = useAnimations(animations, group)
     // const navigate = useNavigate();
 
@@ -63,4 +63,4 @@ export const Maru = forwardRef(
     )
   })
 
-useGLTF.preload('./models/maru.glb')
+useGLTF.preload('models/maru.glb')
