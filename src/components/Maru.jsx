@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 export const Maru = forwardRef(  
   function Model(props, headTop) {
     const group = useRef()
-    const { nodes, materials, animations } = useGLTF('models/maru.glb')
+    const { nodes, materials, animations } = useGLTF('models/maru_fixed.glb')
     const { actions } = useAnimations(animations, group)
     // const navigate = useNavigate();
 
@@ -39,8 +39,8 @@ export const Maru = forwardRef(
           </group>
           
           <mesh name="frame" receiveShadow geometry={nodes.frame.geometry} material={materials.Material} position={[0, 0.38, 1.73]} scale={[3.6, 3.6, 0.28]} />
-          <group name="coffee" position={[0.35, -3.21, 1.9]} rotation={[0, -0.12, 0]} scale={[-0.4, -0.61, -0.39]}>
-            <mesh name="Cylinder004" castShadow geometry={nodes.Cylinder004.geometry} material={materials['Material.004']} />
+          <group name="coffee" position={[0.58, -2.39, 1.8]} rotation={[0, -0.12, 0]} scale={[-0.4, -0.61, -0.39]}>
+            <mesh name="Cylinder004" geometry={nodes.Cylinder004.geometry} material={materials['Material.004']} />
             <mesh name="Cylinder004_1" geometry={nodes.Cylinder004_1.geometry} material={materials['Material.005']} />
           </group>
           <mesh name="wall" geometry={nodes.wall.geometry} material={materials.Material} position={[0, 0.38, 1.73]} scale={[3.6, 3.6, 0.28]} />
@@ -50,8 +50,8 @@ export const Maru = forwardRef(
           <mesh name="head_bottom" castShadow geometry={nodes.head_bottom.geometry} material={materials.skin} position={[0, 0.73, -0.09]} />
           <mesh name="mouth" geometry={nodes.mouth.geometry} material={materials['Material.002']} position={[0.01, 0.14, 1.67]} rotation={[0, 0, 0.01]} scale={[0.61, 0.32, 0.68]} />
           <mesh name="nose" geometry={nodes.nose.geometry} material={materials['Material.003']} position={[0, 0.76, 1.66]} scale={[0.22, 0.39, 0.16]} />
-          <mesh name="left_arm" geometry={nodes.left_arm.geometry} material={materials.skin} position={[1.23, -2.73, 1.19]} rotation={[0.65, 0.15, 0.67]} scale={[0.28, 1.2, 0.37]} />
-          <mesh name="right_arm" geometry={nodes.right_arm.geometry} material={materials.skin} position={[1.74, -3.04, 0.08]} rotation={[-0.11, -0.04, 0.09]} scale={[0.27, 1.66, 0.42]} />
+          <mesh name="left_arm" geometry={nodes.left_arm.geometry} material={materials.skin} position={[1.72, -2.22, 0.36]} rotation={[-0.44, -0.16, 0.33]} scale={[0.39, 1.29, 0.36]} />
+          <mesh name="right_arm" geometry={nodes.right_arm.geometry} material={materials.skin} position={[1.66, -2.24, 0.31]} rotation={[-0.49, -0.15, 0.32]} scale={[0.39, 1.29, 0.36]} />
           <mesh name="head_top" ref={headTop} castShadow geometry={nodes.head_top.geometry} material={materials.skin} position={[1.68, 1.53, 0.03]} />
           <mesh name="stem" castShadow geometry={nodes.stem.geometry} material={materials['Material.008']} position={[-1.67, -0.71, 1.74]} rotation={[-2, -1.2, 2.94]} />
           <mesh name="pot" receiveShadow geometry={nodes.pot.geometry} material={materials['Material.006']} position={[-1.67, -2.03, 1.83]} scale={0.71} />
@@ -63,4 +63,4 @@ export const Maru = forwardRef(
     )
   })
 
-useGLTF.preload('models/maru.glb')
+useGLTF.preload('models/maru_fixed.glb')

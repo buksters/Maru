@@ -34,13 +34,7 @@ export default function About() {
             Thanks for checking this site out. If you have any thoughts or comments, I'd love to hear! Feel free to connect through my socials linked at the top.
             </p>
           </div>
-
-
         </div>
-        
-       
-        
-
       </div>
     </div>
     
