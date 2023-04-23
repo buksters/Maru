@@ -166,6 +166,10 @@ $darkerblue: #495d65;
     overflow-y: scroll;
   }
 
+  a {
+    color: black;
+  }
+
   h1 {
     font-size: 40px;
     z-index: 15;
@@ -251,6 +255,16 @@ $darkerblue: #495d65;
       font-size: 20px;
       padding: 5px 0 20px 0;
       font-weight: 300;
+    }
+
+    img, iframe {
+      width:100%!important;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      height:auto !important;
     }
   }
 

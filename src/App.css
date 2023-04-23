@@ -133,6 +133,9 @@
   align-items: center;
   overflow-y: scroll;
 }
+#post a {
+  color: black;
+}
 #post h1 {
   font-size: 40px;
   z-index: 15;
@@ -208,6 +211,14 @@
   font-size: 20px;
   padding: 5px 0 20px 0;
   font-weight: 300;
+}
+#post .page-content img, #post .page-content iframe {
+  width: 100% !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#post .page-content img {
+  height: auto !important;
 }
 
 #archive .sort-options {
