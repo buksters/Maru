@@ -405,7 +405,7 @@ $darkerblue: #495d65;
 }
 
 .tags{
-  margin: 15px 0 10px 0;
+  margin: 20px 0 0px 0;
   display: flex;
   flex-direction: row;
   grid-area: tags;
@@ -424,7 +424,7 @@ $darkerblue: #495d65;
     padding: 7.5px 13px;
     margin-right: 15px;
     // border: solid $tan .15px;
-    box-shadow: $darkerbrown 1px 1px 5px .5px;
+    // box-shadow: $darkerbrown 1px 1px 5px .5px;
 
     &#type {
       background-color: $green;

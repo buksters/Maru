@@ -322,7 +322,7 @@
 }
 
 .tags {
-  margin: 15px 0 10px 0;
+  margin: 20px 0 0px 0;
   display: flex;
   flex-direction: row;
   grid-area: tags;
@@ -342,7 +342,6 @@
   text-align: center;
   padding: 7.5px 13px;
   margin-right: 15px;
-  box-shadow: #3e332b 1px 1px 5px 0.5px;
 }
 .tags .tag#type {
   background-color: #859d91;

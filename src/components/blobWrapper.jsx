@@ -53,7 +53,6 @@ export default function BlobWrapper({navigate, showBlobs}) {
 
   //sorting posts by date to get most recent:
   const postsDate = posts.map(post => ([post.datePublished, post.slug]))
-  // postsDate.reverse()
   const mostRecentSlug = postsDate[0][1]
 
   const {blobOpacity} = useSpring({
