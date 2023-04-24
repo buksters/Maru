@@ -1,5 +1,5 @@
 import * as THREE from'three'
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useContext } from "react";
 import { useFrame } from '@react-three/fiber';
 import '../App.css'
 import { Html } from "@react-three/drei";
@@ -8,7 +8,8 @@ import { geometry } from "maath";
 import { extend } from "@react-three/fiber";
 import { useSpring, animated, easings} from "@react-spring/web";
 import { Link } from 'react-router-dom';
-
+import { PostsContext } from './PostsContext';
+import fetchPosts from './blogData';
 
 extend(geometry)
 
@@ -21,7 +22,7 @@ function Contents({archive}) {
   )
 }
 
-function BlobContainer({navigate, blobOpacity, type}) {
+function BlobContainer({navigate, blobOpacity, type, url}) {
 
   const [{blobScale}, setScale] = useSpring(() => ({
     from: {blobScale: 1},
@@ -31,26 +32,29 @@ function BlobContainer({navigate, blobOpacity, type}) {
   const [destination, setNav] = useState(null)
 
   useEffect(() => {
-    if(destination==="archive"){
-      navigate("/archive")
-    }
-    if(destination==="recent") {
-      navigate("/archive/getting-over-fears")
-    }
+    if(destination!=null)
+      {{navigate(url)}}
   }, [destination])
 
   return (
-  // <a href = "#" target="_blank">
     <animated.div onClick={()=> setNav(type)} className={"blobContainer "+type} style={{scale: blobScale, opacity: blobOpacity, zIndex: blobScale.to({range: [0,1], output: [0,50]}) }}  onPointerEnter={()=>{setScale.start({blobScale:1.3})}} onPointerLeave={()=>{setScale.start({blobScale:1})}} > 
       <Contents className="contents" archive={type==="archive"} />
       <BlobInside archive={type==="archive"} className="blobInside" />
     </animated.div>
-  // </a>
   )
 
 }
 
 export default function BlobWrapper({navigate, showBlobs}) {
+
+  const posts = useContext(PostsContext);
+  
+  if (!posts) return
+
+  //sorting posts by date to get most recent:
+  const postsDate = posts.map(post => ([post.datePublished, post.slug]))
+  postsDate.reverse()
+  const mostRecentSlug = postsDate[0][1]
 
   const {blobOpacity} = useSpring({
     blobOpacity: showBlobs ? 1 : 0,
@@ -65,8 +69,8 @@ export default function BlobWrapper({navigate, showBlobs}) {
 
     <Html transform >
       <animated.div className="content-wrapper" style={{top: blobOpacity.to({range: [0,1], output: [30,0]})}}>
-        <BlobContainer navigate = {navigate} blobOpacity={blobOpacity} type={"archive"} />
-        <BlobContainer navigate = {navigate} blobOpacity={blobOpacity} type={"recent"} />
+        <BlobContainer navigate = {navigate} blobOpacity={blobOpacity} type={"archive"} url={"/archive"}/>
+        <BlobContainer navigate = {navigate} blobOpacity={blobOpacity} type={"recent"} url={"/archive/"+mostRecentSlug}/>
       </animated.div>
 
     </Html>   

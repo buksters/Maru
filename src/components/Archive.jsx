@@ -3,7 +3,7 @@ import Nav from './Nav';
 import { Link } from 'react-router-dom';
 import Post from './Post';
 import fetchPosts from './blogData';
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 
 function PostCard({post}){
@@ -12,6 +12,17 @@ function PostCard({post}){
   const date = post.datePublished.replaceAll('-', ' · ')
   const description = post.description
   const tag = post.tag
+
+  // ** by slug **
+
+  // let img_src, title, date, description, tag;
+  // posts.filter((post) => post.slug === slug).map((post) => (
+  //   img_src = post.coverPhoto.url,
+  //   title = post.title,
+  //   date = post.datePublished.replaceAll('-', ' · '),
+  //   description = post.description,
+  //   tag = post.tag,
+  // ))
 
 
   return (
@@ -31,9 +42,6 @@ function PostCard({post}){
       <div className='description'>
         {description}
       </div>
-      
-
-        
 
     </div>
   )
@@ -45,6 +53,7 @@ function PostCard({post}){
 
 export default function Archives({posts, setPosts}) {
 
+  const [filter, setFilter] = useState(null);
 
   useEffect(() => {
     if (posts===null) {
@@ -55,6 +64,16 @@ export default function Archives({posts, setPosts}) {
   })
   
   if (!posts) return
+
+  // useEffect(() => {
+  //   if (filter === "newest") {
+
+  //   }
+  //   else if (filter === "oldest") {
+
+  //   }
+  // }, [filter])
+
 
   return (
     <div className="page" id="archive">
@@ -68,7 +87,8 @@ export default function Archives({posts, setPosts}) {
           <h1>Archive</h1>
         </div>
         <div className='sort-options'>
-
+          {/* <div onClick={setFilter("newest")}>Newest first</div>
+          <div onClick={setFilter("oldest")}>Oldest first</div> */}
         </div>
         <div className='page-content'>
           <div className='posts-list'>

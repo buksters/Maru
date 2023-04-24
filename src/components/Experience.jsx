@@ -25,7 +25,7 @@ export const Experience = ({openingHead, navigate}) => {
   
   return (
     <> 
-      <Stars radius={75} depth={10} count={3000} factor={4} saturation={0} fade speed={1} />
+      <Stars radius={75} depth={10} count={3000} factor={6} saturation={.5} fade speed={1} />
       {/* <Sky distance={4000} rayleigh={0.2} azimuth={30} inclination={1.2}/> */}
       <ambientLight intensity={.3} />
       <pointLight position={[-7, 8, -4]} intensity = {3} distance={50} castShadow shadow-mapSize-height={512}
