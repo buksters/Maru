@@ -3,10 +3,16 @@ import Nav from './Nav';
 import { Link } from 'react-router-dom';
 import Post from './Post';
 import fetchPosts from './blogData';
-import { useEffect, useState, useRef, useLayoutEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { Icon } from '@iconify/react';
 
 
 function PostCard({allPosts, slug}){
+  // const img_src = post.coverPhoto.url
+  // const title = post.title
+  // const date = post.datePublished.replaceAll('-', ' · ')
+  // const description = post.description
+  // const tag = post.tag
 
   // ** by slug **
 
@@ -47,36 +53,38 @@ export default function Archives({posts, setPosts}) {
   const [sort, setSort] = useState("byNewest");
   const [filter, setFilter] = useState(null);
 
-
   useEffect(() => {
-    if (posts===null){
-      fetchPosts().then(fetchedPosts => {
-        // setPosts(fetchedPosts);
-        posts = fetchedPosts;
-        reorderPosts(filter, sort, postsOrder, setOrder);
+    if (posts===null) {
+      fetchPosts().then(posts => {
+        setPosts(posts);
       });
     }
-  }, []);
+  })
+  
+  if (!posts) return
 
-
-  const totalPosts = posts ? posts.length : 0;
-  const [postsOrder, setOrder] = useState(!posts ? [] : posts.map(post => ([post.datePublished, post.tag, post.slug])));
-  // const [postsOrder, setOrder] = useState(posts.map(post => ([post.datePublished, post.tag, post.slug])));
+  const totalPosts = posts.length;
+  const [postsOrder, setOrder] = useState(posts.map(post => ([post.datePublished, post.tag, post.slug])));
   // let postsOrder = posts.map(post => ([post.datePublished, post.tag, post.slug]));
 
 
-  const reorderPosts = (filter, sort, postsOrder, setOrder) => {
+  useEffect(() => {
+    
     if (filter === null || postsOrder.length < totalPosts) {
+      console.log("NULL");
       setOrder(posts.map(post => ([post.datePublished, post.tag, post.slug])))
 
     }
 
     if (filter === 'experiments') {
+      console.log("EXPERIMENTS");
       setOrder(postsOrder => postsOrder.filter(post => post[1] === "experiment"));
       // postsOrder = postsOrder.filter(post => post[1] === "experiment")
+      console.log("should b filtered: ", postsOrder[0][1])
     }
 
     if (filter === 'thoughts') {
+      console.log("THOUGHTS");
       // postsOrder = postsOrder.filter(post => post[1] === "thought")
       setOrder(postsOrder => postsOrder.filter(post => post[1] === "thought"));
 
@@ -84,25 +92,19 @@ export default function Archives({posts, setPosts}) {
     }
 
     if (sort === "byNewest") {
-      // setOrder(postsOrder => postsOrder.toSorted().toReversed());
+      console.log("NEWEST");
+
     }
     else if (sort === "byOldest") {
-      setOrder(postsOrder => postsOrder.toSorted());
+      console.log("OLDEST");
+      setOrder(postsOrder => postsOrder.toReversed());
       // postsOrder.reverse(); //should change original array. nondestructive is toReversed()
 
     }
 
-  }
-
-  useEffect(() => {
-    
-    if (posts){
-      reorderPosts(filter, sort, postsOrder, setOrder);
-    }
-
   }, [filter, sort])
 
-  if(!posts) {return}
+  console.log("TESTING: ", postsOrder);
 
   return (
     <div className="page" id="archive">
@@ -134,6 +136,14 @@ export default function Archives({posts, setPosts}) {
                 </Link>
                 )
               })}
+
+            {/* {posts.map((post) => {
+              return (
+                <Link to={"/archive/"+post.slug} key={post.slug} preventScrollReset={true}>
+                  <PostCard key={post.slug} post={post} />
+                </Link>
+                )
+              })} */}
           </div>
 
 

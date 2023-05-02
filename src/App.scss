@@ -272,7 +272,102 @@ $darkerblue: #495d65;
 
 #archive {
   .sort-options {
+    padding-top: 10px;
     height: 75px;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    #label {
+      font-family: $playful-font;
+      font-size: 30px;
+    }
+
+    .tag {
+      cursor: pointer;
+      display: inline-block;
+      font-family: $playful-font;
+      font-size: 23px;
+      line-height: 20px;
+      white-space: nowrap;
+      border-radius: 15px;
+      width: min-content;
+      height: min-content;
+      text-align: center;
+      padding: 7.5px 13px;
+      margin-inline: 7.5px;
+
+      @media (max-width: 500px) {
+      font-size: 18px;
+      padding: 5px 5px;
+      margin-inline: 5px;
+      }
+
+      &.inactive{
+        opacity: 0.5;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+
+      &.date {
+        
+        background-color: $brown;
+        border: $brown solid 3px;
+      }
+
+      &.type {
+
+        &.inactive,  &.active:hover{
+          text-decoration: line-through;
+          text-decoration-color: $darkerbrown;
+
+        }
+        &.active:hover{
+          opacity: 0.75;
+          // text-decoration-thickness: 3px;
+          
+        }
+        background-color: $green;
+        border: $green solid 1px;
+        &::before {
+          content: '#';
+        }
+      }
+      
+    
+    }
+
+    svg {
+      position: relative;
+      transform: scale(3, 3);
+      margin-right: 35px;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+
+      li {
+        appearance: none;
+
+      }
+
+      #divider {
+        margin-inline: 7.5px;
+        font-size: 30px;
+      }
+    }
+
   }
 
   .posts-list {
