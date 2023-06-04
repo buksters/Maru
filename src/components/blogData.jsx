@@ -14,6 +14,7 @@ export default async function fetchPosts() {
         coverPhoto {
           url
         }
+        coverCaption
         content {
           html
         }

@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <>
       <Nav displayBack={false} />
-      <button disabled={headOpen} onClick={handleClick} className='openHeadButton'>What's inside Maru's mind...</button>
+      <button disabled={headOpen} onClick={handleClick} className='openHeadButton'>What's inside my mind...</button>
       <Canvas renderer={{size: (window.innerWidth/2, window.innerHeight/2)}} camera={{ fov: cameraFov, position: [0, 8, 13]}} shadows>
         <Experience navigate={navigate} openingHead={headOpen} />
       </Canvas>

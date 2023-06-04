@@ -18,9 +18,10 @@ export default function Post({posts, setPosts}) {
   if (!posts) return
 
   const {slug} = useParams()
-  let img_src, title, date, description, tag, content;
+  let img_src, caption, title, date, description, tag, content;
   posts.filter((post) => post.slug === slug).map((post) => (
     img_src = post.coverPhoto.url,
+    caption = post.coverCaption,
     title = post.title,
     date = post.datePublished.replaceAll('-', ' · '),
     description = post.description,
@@ -51,7 +52,9 @@ export default function Post({posts, setPosts}) {
         
         <div className='image'>
           <img src={img_src}></img>
+          {caption && <div className="caption">{caption}</div>}
         </div>
+
         <div className='page-content' dangerouslySetInnerHTML={{__html: content}}>
         </div>
       </div>
